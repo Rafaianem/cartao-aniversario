@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Feliz Aniversário, meu amor! 🎉</title>
+<style>
+  body {
+    margin:0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background:#000;
+    color:#fff;
+    overflow-x:hidden;
+    position:relative;
+    text-align:center;
+  }
+
+  h1{
+    margin-top:30px;
+    color:#8dcce0;
+    font-size:2.5rem;
+  }
+
+  #message{
+    max-width:55%;
+    margin:20px auto;
+    font-size:1.3rem;
+    line-height:1.6;
+    background: rgba(0,0,0,0.7);
+    padding:20px;
+    border-radius:12px;
+    box-shadow: 0 0 15px rgba(255,255,255,0.2);
+    text-align:center;
+    z-index:2;
+    position:relative;
+  }
+
+  /* centralizar 5 fotos estilo selfie */
+  .gallery{
+    display:flex;
+    justify-content:center;
+    gap:25px;
+    margin:40px auto 60px;
+    flex-wrap:wrap;
+  }
+  .gallery img{
+    height:350px;   /* mais alto que largo */
+    width:auto;     /* mantém proporção selfie */
+    border-radius:14px;
+    padding: 10px;
+    box-shadow:0 8px 25px rgba(255,255,255,0.2);
+    transition: transform 0.3s ease;
+  }
+  .gallery img:hover{
+    transform: scale(1.05);
+  }
+
+  /* corações */
+  .heart{
+    position:fixed;
+    width:18px;
+    height:18px;
+    background:crimson;
+    transform:rotate(45deg);
+    border-radius:3px;
+    opacity:0.65;
+    animation:fall 9s linear infinite;
+    z-index:1;
+    pointer-events:none;
+  }
+  .heart::before,.heart::after{
+    content:""; position:absolute; width:100%; height:100%; background:crimson; border-radius:50%;
+  }
+  .heart::before{ top:-50% }
+  .heart::after{ left:-50% }
+
+  @keyframes fall{
+    0%{transform:translateY(-10vh) rotate(45deg); opacity:0}
+    10%{opacity:.65}
+    100%{transform:translateY(110vh) rotate(45deg); opacity:0}
+  }
+
+  #startMusicBtn{
+    display:block;
+    font-size:1rem; padding:12px 18px; margin:20px auto 0;
+    border:none; border-radius:10px; cursor:pointer;
+    background:#ff4081; color:#fff;
+  }
+
+  @media(max-width:1000px){
+    .gallery img{
+      height:280px;
+    }
+  }
+  @media(max-width:700px){
+    .gallery img{
+      height:230px;
+    }
+  }
+  @media(max-width:500px){
+    .gallery img{
+      height:200px;
+      width:80%;
+    }
+  }
+</style>
+</head>
+<body>
+  <h1>🎂 Feliz Aniversário, meu amor! 💖</h1>
+
+  <div id="message">
+    <p><strong>Parabéns princesa!👑💖</strong></p>
+    <p>Eu sou grata e apaixonada por cada sorriso, cada abraço, cada cuidado e por cada detalhe seu — até mesmo pelas birras kkk.</p>
+    <p>Que este novo ciclo traga ainda mais sonhos realizados, alegria e amor, e que eu possa estar ao seu lado em todos eles.</p>
+    <p>Você é o meu presente todos os dias. Te amo mto, mto bb! 💕</p>
+  </div>
+
+  <!-- Música MP3 invisível -->
+  <audio id="musica" loop>
+    <source src="musica.mp3" type="audio/mpeg">
+    Seu navegador não suporta áudio.
+  </audio>
+  <div id="startMusicContainer"></div>
+
+  <!-- Galeria centralizada com 5 fotos -->
+  <div class="gallery">
+    <img src="foto1.jpg" alt="Foto 1">
+    <img src="foto2.jpg" alt="Foto 2">
+    <img src="foto3.jpg" alt="Foto 3">
+    <img src="foto4.jpg" alt="Foto 4">
+    <img src="foto5.jpg" alt="Foto 5">
+  </div>
+
+  <script>
+    // corações
+    function criarCoracao(){
+      const h = document.createElement('div');
+      h.className = 'heart';
+      const size = Math.random()*12 + 12;
+      h.style.width = h.style.height = size + 'px';
+      h.style.left = Math.random()*100 + 'vw';
+      h.style.animationDuration = (Math.random()*4 + 7) + 's';
+      document.body.appendChild(h);
+      setTimeout(()=>h.remove(), 12000);
+    }
+    setInterval(criarCoracao, 500);
+
+    // música autoplay com fallback de botão
+    const musica = document.getElementById('musica');
+    window.addEventListener('load', ()=>{
+      musica.play().catch(()=>{
+        const btn = document.createElement('button');
+        btn.id = 'startMusicBtn';
+        btn.textContent = 'Iniciar Música 🎵';
+        document.getElementById('startMusicContainer').appendChild(btn);
+        btn.addEventListener('click', ()=>{musica.play(); btn.remove()});
+      });
+    });
+  </script>
+</body>
+</html>
