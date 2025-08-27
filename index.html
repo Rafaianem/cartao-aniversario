@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 <title>Feliz Aniversário, meu amor! 🎉</title>
 <style>
   body {
@@ -16,20 +16,21 @@
   }
 
   h1{
-    margin-top:30px;
+    margin-top:20px;
     color:#8dcce0;
-    font-size:2.5rem;
+    font-size:2rem;
+    padding:0 10px;
   }
 
   #message{
-    max-width:55%;
-    margin:20px auto;
-    font-size:1.3rem;
-    line-height:1.6;
+    max-width:90%;
+    margin:15px auto;
+    font-size:1rem;
+    line-height:1.4;
     background: rgba(0,0,0,0.7);
-    padding:20px;
-    border-radius:12px;
-    box-shadow: 0 0 15px rgba(255,255,255,0.2);
+    padding:12px 15px;
+    border-radius:10px;
+    box-shadow: 0 0 12px rgba(255,255,255,0.2);
     text-align:center;
     z-index:2;
     position:relative;
@@ -39,16 +40,16 @@
   .gallery{
     display:flex;
     justify-content:center;
-    gap:25px;
-    margin:40px auto 60px;
+    gap:15px;
+    margin:25px auto 40px;
     flex-wrap:wrap;
   }
   .gallery img{
-    height:350px;   /* mais alto que largo */
-    width:auto;     /* mantém proporção selfie */
-    border-radius:14px;
-    padding: 10px;
-    box-shadow:0 8px 25px rgba(255,255,255,0.2);
+    height:200px;
+    width:auto;
+    border-radius:12px;
+    padding:5px;
+    box-shadow:0 5px 20px rgba(255,255,255,0.2);
     transition: transform 0.3s ease;
   }
   .gallery img:hover{
@@ -58,13 +59,13 @@
   /* corações */
   .heart{
     position:fixed;
-    width:18px;
-    height:18px;
+    width:14px;
+    height:14px;
     background:crimson;
     transform:rotate(45deg);
     border-radius:3px;
     opacity:0.65;
-    animation:fall 9s linear infinite;
+    animation:fall 8s linear infinite;
     z-index:1;
     pointer-events:none;
   }
@@ -82,37 +83,48 @@
 
   #startMusicBtn{
     display:block;
-    font-size:1rem; padding:12px 18px; margin:20px auto 0;
-    border:none; border-radius:10px; cursor:pointer;
+    font-size:0.9rem; padding:10px 16px; margin:15px auto 0;
+    border:none; border-radius:8px; cursor:pointer;
     background:#ff4081; color:#fff;
   }
 
-  @media(max-width:1000px){
-    .gallery img{
-      height:280px;
-    }
-  }
+  /* ajustes para telas pequenas */
   @media(max-width:700px){
+    #message{
+      font-size:0.95rem;
+      padding:10px 12px;
+    }
     .gallery img{
-      height:230px;
+      height:160px;
+    }
+    h1{
+      font-size:1.6rem;
     }
   }
+
   @media(max-width:500px){
+    #message{
+      font-size:0.9rem;
+      padding:8px 10px;
+    }
     .gallery img{
-      height:200px;
-      width:80%;
+      height:140px;
+      width:45%;
+    }
+    h1{
+      font-size:1.4rem;
     }
   }
 </style>
 </head>
 <body>
-  <h1>🎂 Feliz Aniversário, meu amor! 💖</h1>
+  <h1>🎂 Feliz Aniversário, meu amor! 👑</h1>
 
   <div id="message">
-    <p><strong>Parabéns princesa!👑💖</strong></p>
+    <p><strong>Parabéns princesa! 👑💖</strong></p>
     <p>Eu sou grata e apaixonada por cada sorriso, cada abraço, cada cuidado e por cada detalhe seu — até mesmo pelas birras kkk.</p>
     <p>Que este novo ciclo traga ainda mais sonhos realizados, alegria e amor, e que eu possa estar ao seu lado em todos eles.</p>
-    <p>Você é o meu presente todos os dias. Te amo mto, mto bb! 💕</p>
+    <p>Você é o meu presente todos os dias. Te amo mto, mto bb! 👑</p>
   </div>
 
   <!-- Música MP3 invisível -->
@@ -136,12 +148,12 @@
     function criarCoracao(){
       const h = document.createElement('div');
       h.className = 'heart';
-      const size = Math.random()*12 + 12;
+      const size = Math.random()*10 + 10;
       h.style.width = h.style.height = size + 'px';
       h.style.left = Math.random()*100 + 'vw';
-      h.style.animationDuration = (Math.random()*4 + 7) + 's';
+      h.style.animationDuration = (Math.random()*4 + 6) + 's';
       document.body.appendChild(h);
-      setTimeout(()=>h.remove(), 12000);
+      setTimeout(()=>h.remove(), 10000);
     }
     setInterval(criarCoracao, 500);
 
