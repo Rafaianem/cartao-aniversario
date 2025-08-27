@@ -16,21 +16,21 @@
   }
 
   h1{
-    margin-top:20px;
+    margin-top:15px;
     color:#8dcce0;
     font-size:2rem;
     padding:0 10px;
   }
 
   #message{
-    max-width:90%;
-    margin:15px auto;
+    max-width:95%;
+    margin:10px auto;
     font-size:1rem;
     line-height:1.4;
-    background: rgba(0,0,0,0.7);
-    padding:12px 15px;
-    border-radius:10px;
-    box-shadow: 0 0 12px rgba(255,255,255,0.2);
+    background: rgba(0,0,0,0.75);
+    padding:15px 12px;
+    border-radius:12px;
+    box-shadow: 0 0 15px rgba(255,255,255,0.25);
     text-align:center;
   }
 
@@ -38,15 +38,15 @@
     display:flex;
     flex-wrap:wrap;
     justify-content:center;
-    gap:15px;
-    margin:25px auto 40px;
+    gap:10px;
+    margin:15px auto 25px;
   }
   .gallery img{
-    max-height:180px;
+    max-height:calc(20vh + 60px); /* fotos grandes e proporcionais */
     width:auto;
     border-radius:12px;
-    padding:5px;
-    box-shadow:0 5px 20px rgba(255,255,255,0.2);
+    padding:3px;
+    box-shadow:0 4px 18px rgba(255,255,255,0.25);
     transition: transform 0.3s ease;
   }
   .gallery img:hover{
@@ -80,36 +80,22 @@
 
   #startMusicBtn{
     display:block;
-    font-size:0.9rem; padding:10px 16px; margin:15px auto 0;
+    font-size:0.9rem; padding:10px 16px; margin:12px auto 0;
     border:none; border-radius:8px; cursor:pointer;
     background:#ff4081; color:#fff;
   }
 
+  /* ajustes responsivos */
   @media(max-width:700px){
-    #message{
-      font-size:0.95rem;
-      padding:10px 12px;
-    }
-    .gallery img{
-      max-height:140px;
-    }
-    h1{
-      font-size:1.6rem;
-    }
+    h1{ font-size:1.6rem; }
+    #message{ font-size:0.95rem; padding:10px 10px; }
+    .gallery img{ max-height:120px; }
   }
 
   @media(max-width:500px){
-    #message{
-      font-size:0.9rem;
-      padding:8px 10px;
-    }
-    .gallery img{
-      max-height:120px;
-      width:45%;
-    }
-    h1{
-      font-size:1.4rem;
-    }
+    h1{ font-size:1.4rem; }
+    #message{ font-size:0.9rem; padding:8px 8px; }
+    .gallery img{ max-height:100px; width:45%; }
   }
 </style>
 </head>
@@ -144,12 +130,12 @@
     function criarCoracao(){
       const h = document.createElement('div');
       h.className = 'heart';
-      const size = Math.random()*10 + 10;
+      const size = Math.random()*12 + 12;
       h.style.width = h.style.height = size + 'px';
       h.style.left = Math.random()*100 + 'vw';
       h.style.animationDuration = (Math.random()*4 + 6) + 's';
       document.body.appendChild(h);
-      setTimeout(()=>h.remove(), 10000);
+      setTimeout(()=>h.remove(), 12000);
     }
     setInterval(criarCoracao, 500);
 
@@ -167,3 +153,5 @@
   </script>
 </body>
 </html>
+
+
